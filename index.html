@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Jerome Sebastin Jesudoss – Network Engineering MSc graduate seeking IT support and networking roles in London.">
+<style>*{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Jerome Sebastin Jesudoss</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,500..900&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: Swiss-style light theme — crisp white, ruled lines, one strong cobalt; career as traceroute, skills as config */
+:root {
+  --bg: #fbfbfd;
+  --surface: #ffffff;
+  --ink: #111526;
+  --muted: #5d6275;
+  --line: #e1e3ec;
+  --accent: #2b45d8;      /* cobalt */
+  --accent-soft: #e6eafc;
+  --signal: #1c7a4f;      /* port-up, used only for status */
+  --on-accent: #ffffff;
+  --grid: transparent;
+  --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --body: "Public Sans", -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f111a; --surface: #161925; --ink: #eceef6; --muted: #9da2b8; --line: #272b3b;
+    --accent: #7d8ffb; --accent-soft: #1e2440; --signal: #5fd39b; --on-accent: #0f111a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f111a; --surface: #161925; --ink: #eceef6; --muted: #9da2b8; --line: #272b3b;
+  --accent: #7d8ffb; --accent-soft: #1e2440; --signal: #5fd39b; --on-accent: #0f111a;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background-color: var(--bg);
+  background-image: radial-gradient(var(--grid) 1.2px, transparent 1.4px);
+  background-size: 22px 22px;
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 920px; margin: 0 auto; padding-block: 3.5rem 4rem; display: grid; gap: 4.5rem; }
+
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; line-height: 1.1; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+.label {
+  font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted); display: flex; align-items: center; gap: 0.6rem;
+}
+.label::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+
+/* Hero */
+.hero { display: grid; gap: 1.5rem; }
+.status {
+  font-family: var(--mono); font-size: 0.8rem; color: var(--signal);
+  display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.status i { width: 8px; height: 8px; border-radius: 50%; background: var(--signal); animation: blink 2.4s ease-in-out infinite; }
+@keyframes blink { 50% { opacity: 0.35; } }
+.hero h1 { font-size: clamp(2.6rem, 9vw, 5.6rem); font-weight: 900; font-stretch: 75%; text-transform: uppercase; letter-spacing: -0.01em; line-height: 0.95; }
+.hero { border-top: 6px solid var(--accent); padding-top: 1.5rem; }
+section > h2, footer h2 { font-weight: 800 !important; font-stretch: 80%; text-transform: uppercase; letter-spacing: 0 !important; }
+section { border-top: 1px solid var(--ink); padding-top: 1.25rem; }
+.project, .terminal, .block, .chip { border-radius: 2px; }
+.project.featured { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+.project.featured .ctx { color: var(--on-accent); opacity: 0.8; }
+.project.featured ul li::marker { color: var(--on-accent); }
+.project.featured .stack span { background: transparent; border: 1px solid var(--on-accent); color: var(--on-accent); }
+.label::before { border-radius: 0; box-shadow: none; }
+.hero h1 span { color: var(--accent); }
+.role { font-family: var(--display); font-weight: 500; font-size: clamp(1.2rem, 3vw, 1.6rem); color: var(--muted); }
+.summary { max-width: 62ch; }
+.contact { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.5rem; }
+.chip {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  font-family: var(--mono); font-size: 0.85rem;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 6px;
+  padding: 0.5rem 0.75rem; color: var(--ink); user-select: all;
+}
+.chip b { font-weight: 500; color: var(--muted); user-select: none; }
+button.copy {
+  font: inherit; font-family: var(--mono); font-size: 0.75rem; cursor: pointer;
+  border: 1px solid var(--line); background: transparent; color: var(--muted);
+  border-radius: 4px; padding: 0.15rem 0.45rem; user-select: none;
+}
+button.copy:hover { color: var(--accent); border-color: var(--accent); }
+
+section { display: grid; gap: 1.5rem; }
+section > h2 { font-size: clamp(1.7rem, 4vw, 2.3rem); font-weight: 700; letter-spacing: -0.02em; }
+
+/* Traceroute */
+.terminal {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden;
+}
+.term-bar {
+  font-family: var(--mono); font-size: 0.8rem; color: var(--muted);
+  padding: 0.7rem 1.1rem; border-bottom: 1px solid var(--line);
+  overflow-x: auto; white-space: nowrap;
+}
+.term-bar span { color: var(--accent); }
+.hops { list-style: none; margin: 0; padding: 0.5rem 0; }
+.hop {
+  display: grid; grid-template-columns: 2.5rem 1fr auto; gap: 0 1rem;
+  padding: 1.1rem 1.1rem; border-bottom: 1px dashed var(--line);
+}
+.hop:last-child { border-bottom: 0; }
+.hop-n { font-family: var(--mono); color: var(--accent); font-weight: 500; padding-top: 0.15rem; font-variant-numeric: tabular-nums; }
+.hop-main { min-width: 0; display: grid; gap: 0.3rem; }
+.hop h3 { font-size: 1.2rem; font-weight: 700; }
+.hop .where { font-family: var(--mono); font-size: 0.82rem; color: var(--muted); }
+.hop ul { margin: 0.4rem 0 0; padding-left: 1.1rem; display: grid; gap: 0.2rem; color: var(--ink); font-size: 0.98rem; }
+.hop ul li::marker { color: var(--accent); }
+.hop-date { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); white-space: nowrap; padding-top: 0.2rem; font-variant-numeric: tabular-nums; }
+.tag { font-family: var(--mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--signal); }
+
+/* Skills as config blocks */
+.config { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+.block {
+  font-family: var(--mono); font-size: 0.85rem; line-height: 1.75;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 1rem 1.1rem;
+  min-width: 0;
+}
+.block .kw { color: var(--accent); }
+.block .cm { color: var(--muted); }
+.block ul { list-style: none; margin: 0.25rem 0 0; padding: 0 0 0 1.25rem; }
+.block li::before { content: "› "; color: var(--muted); }
+
+/* Projects */
+.projects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.project {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+  padding: 1.4rem; display: grid; gap: 0.7rem; align-content: start;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.project:hover { transform: translateY(-2px); border-color: var(--accent); }
+.project.featured { grid-column: 1 / -1; border-color: var(--accent); }
+.project h3 { font-size: 1.3rem; font-weight: 700; }
+.project.featured h3 { font-size: clamp(1.4rem, 3vw, 1.8rem); }
+.project .ctx { font-size: 0.9rem; color: var(--muted); }
+.project p { font-size: 0.98rem; }
+.project ul { margin: 0; padding-left: 1.1rem; display: grid; gap: 0.25rem; font-size: 0.98rem; }
+.project ul li::marker { color: var(--accent); }
+.stack { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.stack span {
+  font-family: var(--mono); font-size: 0.72rem; padding: 0.2rem 0.5rem;
+  border-radius: 4px; background: var(--accent-soft); color: var(--ink);
+}
+.feat-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 1.5rem; }
+.feat-grid > * { min-width: 0; }
+
+/* Leadership */
+.lead { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; }
+.lead > div { display: grid; gap: 0.4rem; border-top: 2px solid var(--ink); padding-top: 1rem; }
+.lead h3 { font-size: 1.15rem; font-weight: 700; }
+.lead .where { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); }
+
+/* Footer */
+footer {
+  border-top: 1px solid var(--line); padding-top: 2.5rem; display: grid; gap: 1.2rem;
+}
+footer h2 { font-size: clamp(1.4rem, 4vw, 2.2rem); max-width: 22ch; line-height: 1.2; }
+section > h2 { font-size: clamp(1.4rem, 3.4vw, 1.9rem) !important; }
+footer small { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); }
+
+@media (max-width: 680px) {
+  .wrap { gap: 3.5rem; padding-block: 2rem 3rem; }
+  .projects, .lead, .feat-grid { grid-template-columns: 1fr; }
+  .hop { grid-template-columns: 2rem 1fr; }
+  .hop-date { grid-column: 2; grid-row: 1; padding: 0 0 0.3rem; }
+  .hop-main { grid-column: 2; }
+  .hop-n { grid-row: 1 / span 2; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .status i { animation: none; }
+  .project { transition: none; }
+  .project:hover { transform: none; }
+}
+
+/* ===== Motion layer ===== */
+.progress { position: fixed; top: 0; left: 0; right: 0; height: calc(3px + env(safe-area-inset-top, 0px)); z-index: 20; pointer-events: none; }
+.progress i { display: block; height: 100%; width: 100%; background: var(--accent); transform-origin: 0 50%; transform: scaleX(0); }
+.hero { position: relative; isolation: isolate; }
+#net { position: absolute; inset: -1.5rem -1rem 0; width: calc(100% + 2rem); height: calc(100% + 1.5rem); z-index: -1; opacity: 0.55; pointer-events: none; }
+.hero > *:not(canvas) { animation: rise 0.8s cubic-bezier(.2,.7,.2,1) backwards; }
+.hero > *:nth-child(2) { animation-delay: .05s } .hero > *:nth-child(3) { animation-delay: .15s }
+.hero > *:nth-child(4) { animation-delay: .3s } .hero > *:nth-child(5) { animation-delay: .45s }
+.hero > *:nth-child(6) { animation-delay: .6s }
+@keyframes rise { from { opacity: 0; transform: translateY(18px); } }
+.rot { display: inline-block; color: var(--accent); font-weight: 700; transition: opacity .35s ease, transform .35s ease; }
+.rot.out { opacity: 0; transform: translateY(-0.4em); }
+.cursor { display: inline-block; width: 0.55em; height: 1em; vertical-align: -0.15em; background: var(--accent); margin-left: 2px; animation: cur 1s steps(1) infinite; }
+@keyframes cur { 50% { opacity: 0; } }
+.hops { position: relative; }
+.hops::before { content: ""; position: absolute; left: calc(1.1rem + 0.7rem); top: 1.6rem; bottom: 1.6rem; width: 2px; background: var(--line); }
+.packet { position: absolute; left: calc(1.1rem + 0.7rem - 4px); top: 1.6rem; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft), 0 0 14px var(--accent); animation: travel 6s ease-in-out infinite; }
+@keyframes travel { 0% { top: 1.6rem; opacity: 0 } 6% { opacity: 1 } 90% { opacity: 1 } 100% { top: calc(100% - 1.6rem); opacity: 0 } }
+.hop-n { position: relative; z-index: 1; background: var(--surface); align-self: start; }
+.hop { transition: background .25s ease; }
+.hop:hover { background: var(--accent-soft); }
+.hop:hover .hop-n { background: transparent; }
+.block { transition: transform .25s ease, border-color .25s ease; }
+.block:hover { transform: translateY(-4px); border-color: var(--accent); }
+.block .kw::after { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--signal); margin-left: .5rem; vertical-align: middle; animation: blink 1.6s ease-in-out infinite; }
+.block:nth-child(2) .kw::after { animation-delay: .4s } .block:nth-child(3) .kw::after { animation-delay: .8s } .block:nth-child(4) .kw::after { animation-delay: 1.2s }
+.project { transform-style: preserve-3d; will-change: transform; transition: transform .15s ease-out, border-color .2s ease, box-shadow .2s ease; }
+.project:hover { box-shadow: 0 18px 40px -20px var(--accent); }
+.stack span { transition: transform .2s ease; }
+.project:hover .stack span { transform: translateY(-2px); }
+.project:hover .stack span:nth-child(2) { transition-delay: .03s } .project:hover .stack span:nth-child(3) { transition-delay: .06s }
+.project:hover .stack span:nth-child(4) { transition-delay: .09s } .project:hover .stack span:nth-child(5) { transition-delay: .12s }
+.chip { transition: border-color .2s ease, transform .2s ease; }
+.chip:hover { border-color: var(--accent); transform: translateY(-2px); }
+@supports (animation-timeline: view()) {
+  .reveal { animation: slidein linear both; animation-timeline: view(); animation-range: entry 0% entry 70%; }
+  @keyframes slidein { from { opacity: .35; transform: translateY(36px) scale(.98); } }
+}
+@media (max-width: 680px) {
+  .hops::before, .packet { left: calc(1.1rem + 0.5rem); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  #net { display: none; }
+  .project { transform: none !important; }
+}
+</style>
+</head>
+<body>
+
+<main class="wrap">
+
+  <div class="progress" aria-hidden="true"><i id="bar"></i></div>
+  <header class="hero">
+    <canvas id="net" aria-hidden="true"></canvas>
+    <span class="status"><i></i>link up · open to IT support &amp; networking roles · London</span>
+    <h1>Jerome Sebastin<br>Jesudoss<span>.</span></h1>
+    <p class="role">Network Engineering MSc · ready for <span class="rot" id="rot">IT support</span> roles</p>
+    <p class="summary">I hold an MSc in Network Engineering from the University of Greenwich and a background in software development and system administration. I've built PCs, repaired hardware, recovered data and kept a busy restaurant's systems running. Now I'm moving into IT support and networking, where I can put both sides of that experience to work.</p>
+    <div class="contact">
+      <span class="chip"><b>email</b><span id="email">jeromesebastin10@gmail.com</span><button class="copy" type="button" data-copy="email" id="copy-email">copy</button></span>
+      <span class="chip"><b>phone</b><span id="phone">+44 7587 654376</span><button class="copy" type="button" data-copy="phone" id="copy-phone">copy</button></span>
+    </div>
+  </header>
+
+  <section aria-labelledby="path-h">
+    <div class="label">Experience &amp; education</div>
+    <h2 id="path-h">The route so far</h2>
+    <div class="terminal">
+      <div class="term-bar">$ <span id="typed">traceroute jerome</span><i class="cursor"></i> &nbsp;·&nbsp; 5 hops, most recent first</div>
+      <ol class="hops">
+        <span class="packet" aria-hidden="true"></span>
+        <li class="hop reveal">
+          <span class="hop-n">01</span>
+          <div class="hop-main">
+            <span class="tag">Work</span>
+            <h3>Restaurant Admin</h3>
+            <span class="where">Dosa n Chutney · Tooting, London</span>
+            <ul>
+              <li>Ran day-to-day operations using system tools and Microsoft Office.</li>
+              <li>Handled stock, performance tracking and team coordination.</li>
+              <li>Supported POS systems and fixed customer-facing technical issues.</li>
+            </ul>
+          </div>
+          <span class="hop-date">Jan 2024 – Jan 2025</span>
+        </li>
+        <li class="hop reveal">
+          <span class="hop-n">02</span>
+          <div class="hop-main">
+            <span class="tag">Education</span>
+            <h3>MSc Network Engineering</h3>
+            <span class="where">University of Greenwich · London</span>
+          </div>
+          <span class="hop-date">Sep 2023 – Sep 2024</span>
+        </li>
+        <li class="hop reveal">
+          <span class="hop-n">03</span>
+          <div class="hop-main">
+            <span class="tag">Education</span>
+            <h3>B.Voc Software Development &amp; System Administration</h3>
+            <span class="where">St. Joseph's College · Trichy, India</span>
+          </div>
+          <span class="hop-date">Jun 2020 – Mar 2023</span>
+        </li>
+        <li class="hop reveal">
+          <span class="hop-n">04</span>
+          <div class="hop-main">
+            <span class="tag">Work</span>
+            <h3>IT Intern, Hardware &amp; System Support</h3>
+            <span class="where">ASP Computers · Karaikudi, India</span>
+            <ul>
+              <li>Installed and configured operating systems on PCs and laptops.</li>
+              <li>Diagnosed and repaired hardware: SMPS, motherboards, ports.</li>
+              <li>Assembled CPUs and handled component-level troubleshooting.</li>
+              <li>Recovered data from corrupted storage and removed malware.</li>
+              <li>Applied antivirus and routine system maintenance practices.</li>
+            </ul>
+          </div>
+          <span class="hop-date">Dec 2022 – Jan 2023</span>
+        </li>
+        <li class="hop reveal">
+          <span class="hop-n">05</span>
+          <div class="hop-main">
+            <span class="tag">Leadership</span>
+            <h3>President, Student Association</h3>
+            <span class="where">St. Joseph's College · Trichy, India</span>
+          </div>
+          <span class="hop-date">2022 – 2023</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section aria-labelledby="skills-h">
+    <div class="label">Skills</div>
+    <h2 id="skills-h">Running config</h2>
+    <div class="config">
+      <div class="block reveal">
+        <span class="kw">interface</span> networking<br>
+        <span class="cm">! the MSc core</span>
+        <ul><li>TCP/IP &amp; subnetting</li><li>DHCP &amp; DNS</li><li>Routing &amp; switching basics</li><li>Cisco Packet Tracer</li></ul>
+      </div>
+      <div class="block reveal">
+        <span class="kw">interface</span> support<br>
+        <span class="cm">! hands-on, from the internship</span>
+        <ul><li>Windows system administration</li><li>Windows &amp; Linux OS setup</li><li>Hardware diagnostics &amp; repair</li><li>Data recovery &amp; malware removal</li><li>Remote desktop tools</li></ul>
+      </div>
+      <div class="block reveal">
+        <span class="kw">interface</span> development<br>
+        <span class="cm">! web, mobile, databases</span>
+        <ul><li>Java · Kotlin · PHP</li><li>HTML · CSS · JavaScript</li><li>MySQL · Firebase</li><li>REST APIs · GitHub</li><li>Android Studio · XAMPP</li></ul>
+      </div>
+      <div class="block reveal">
+        <span class="kw">interface</span> people<br>
+        <span class="cm">! from front-of-house and student leadership</span>
+        <ul><li>Customer service</li><li>Clear communication</li><li>Team collaboration</li><li>Problem-solving under pressure</li><li>Microsoft Excel &amp; Word</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="proj-h">
+    <div class="label">Projects</div>
+    <h2 id="proj-h">Things I've built</h2>
+    <div class="projects">
+      <article class="reveal project featured">
+        <div class="feat-grid">
+          <div style="display:grid;gap:0.7rem;align-content:start">
+            <span class="ctx">MSc final project · University of Greenwich</span>
+            <h3>Cross-platform health activity tracker</h3>
+            <p>A mobile app for Android and iOS that lets people log calories, set goals, keep activity streaks and manage their profile, with data synced in real time.</p>
+            <div class="stack"><span>Kotlin</span><span>Java</span><span>Firebase</span><span>Android Jetpack</span><span>ExerciseDB API</span></div>
+          </div>
+          <ul>
+            <li>User login and profile updates through Firebase Auth.</li>
+            <li>Real-time sync and secure cloud storage with Firebase Realtime DB.</li>
+            <li>Third-party exercise data from the ExerciseDB API.</li>
+            <li>GDPR-compliant handling of personal health data.</li>
+            <li>Kotlin coroutines and a modular architecture for smooth performance.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="reveal project">
+        <span class="ctx">B.Voc final project · St. Joseph's College</span>
+        <h3>Hostel management system</h3>
+        <p>A web system that replaced manual hostel paperwork: room allocation, student registration, fee tracking and complaints, with separate admin and student logins.</p>
+        <div class="stack"><span>PHP</span><span>MySQL</span><span>HTML/CSS</span><span>XAMPP</span></div>
+      </article>
+      <article class="reveal project">
+        <span class="ctx">Mini project</span>
+        <h3>Billing software for a sweet shop</h3>
+        <p>A desktop billing app that takes customer orders and keeps inventory up to date, with a Java GUI backed by a MySQL database.</p>
+        <div class="stack"><span>Java Swing</span><span>MySQL</span></div>
+      </article>
+      <article class="reveal project">
+        <span class="ctx">Mini project</span>
+        <h3>Personal portfolio website</h3>
+        <p>A responsive site showcasing academic and technical work, with project highlights and a contact form.</p>
+        <div class="stack"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Bootstrap</span></div>
+      </article>
+      <article class="reveal project">
+        <span class="ctx">Community</span>
+        <h3>Clique Construct Software Club</h3>
+        <p>Member of the college software club, taking part in code camps, peer learning groups and mini hackathons on web and system development.</p>
+        <div class="stack"><span>Hackathons</span><span>Peer learning</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="lead-h">
+    <div class="label">Beyond the tech</div>
+    <h2 id="lead-h">Leadership</h2>
+    <div class="lead reveal">
+      <div>
+        <h3>President, Student Association</h3>
+        <span class="where">St. Joseph's College · 2022–2023</span>
+        <p>Led college-wide student initiatives, events and tech competitions, coordinating volunteers and staff from planning through to the day.</p>
+      </div>
+      <div>
+        <h3>Running a busy front of house</h3>
+        <span class="where">Dosa n Chutney · 2024–2025</span>
+        <p>Kept stock, staff and the till systems working during service, and became the person colleagues came to when something technical broke.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="label">Contact</div>
+    <h2>Looking for IT support or a junior network engineer in London?</h2>
+    <div class="contact">
+      <span class="chip"><b>email</b><span id="email2">jeromesebastin10@gmail.com</span><button class="copy" type="button" data-copy="email2" id="copy-email2">copy</button></span>
+      <span class="chip"><b>phone</b><span id="phone2">+44 7587 654376</span><button class="copy" type="button" data-copy="phone2" id="copy-phone2">copy</button></span>
+    </div>
+    <small>© 2026 Jerome Sebastin Jesudoss · London, United Kingdom</small>
+  </footer>
+
+</main>
+
+<script>
+document.querySelectorAll("button.copy").forEach(function (btn) {
+  btn.addEventListener("click", function () {
+    var el = document.getElementById(btn.dataset.copy);
+    var text = el.textContent.replace(/\s+/g, btn.dataset.copy.indexOf("phone") === 0 ? "" : " ").trim();
+    var done = function () { btn.textContent = "copied"; setTimeout(function () { btn.textContent = "copy"; }, 1500); };
+    var fallback = function () {
+      var r = document.createRange(); r.selectNodeContents(el);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      btn.textContent = "selected";
+      setTimeout(function () { btn.textContent = "copy"; }, 1500);
+    };
+    try {
+      navigator.clipboard.writeText(text).then(done, fallback);
+    } catch (e) { fallback(); }
+  });
+});
+
+(function () {
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // scroll progress
+  var bar = document.getElementById("bar");
+  function onScroll() {
+    var h = document.documentElement.scrollHeight - innerHeight;
+    bar.style.transform = "scaleX(" + (h > 0 ? scrollY / h : 0) + ")";
+  }
+  addEventListener("scroll", onScroll, { passive: true }); onScroll();
+  if (reduce) return;
+
+  // rotating role
+  var words = ["IT support", "network engineering", "helpdesk", "junior sysadmin", "infrastructure"];
+  var rot = document.getElementById("rot"), wi = 0;
+  setInterval(function () {
+    rot.classList.add("out");
+    setTimeout(function () { wi = (wi + 1) % words.length; rot.textContent = words[wi]; rot.classList.remove("out"); }, 350);
+  }, 2600);
+
+  // type the traceroute command when it scrolls into view
+  var typed = document.getElementById("typed"), full = typed.textContent, done = false;
+  new IntersectionObserver(function (es, ob) {
+    if (done || !es[0].isIntersecting) return; done = true; ob.disconnect();
+    var i = 0; typed.textContent = "";
+    var t = setInterval(function () { typed.textContent = full.slice(0, ++i); if (i >= full.length) clearInterval(t); }, 55);
+  }, { threshold: 0.6 }).observe(typed);
+
+  // 3D tilt on project cards
+  if (matchMedia("(hover: hover)").matches) {
+    document.querySelectorAll(".project").forEach(function (c) {
+      c.addEventListener("pointermove", function (e) {
+        var r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+        c.style.transform = "perspective(900px) rotateX(" + (-y * 5) + "deg) rotateY(" + (x * 6) + "deg) translateY(-3px)";
+      });
+      c.addEventListener("pointerleave", function () { c.style.transform = ""; });
+    });
+  }
+
+  // network canvas: nodes, links and packets
+  var cv = document.getElementById("net"), ctx = cv.getContext("2d"), hero = cv.parentElement;
+  var W, H, dpr, nodes = [], packets = [], mouse = { x: -999, y: -999 };
+  function size() {
+    dpr = Math.min(devicePixelRatio || 1, 2);
+    W = cv.clientWidth; H = cv.clientHeight; cv.width = W * dpr; cv.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var n = Math.round(Math.min(46, Math.max(18, W * H / 14000)));
+    nodes = [];
+    for (var i = 0; i < n; i++) nodes.push({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .25, vy: (Math.random() - .5) * .25 });
+  }
+  size(); addEventListener("resize", size);
+  hero.addEventListener("pointermove", function (e) { var r = cv.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; });
+  hero.addEventListener("pointerleave", function () { mouse.x = mouse.y = -999; });
+  var css = getComputedStyle(document.documentElement), accent, ink, tick = 0;
+  function colors() { css = getComputedStyle(document.documentElement); accent = css.getPropertyValue("--accent").trim(); ink = css.getPropertyValue("--muted").trim(); }
+  colors();
+  var LINK = 130, visible = true;
+  new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }).observe(cv);
+  function frame() {
+    requestAnimationFrame(frame);
+    if (!visible) return;
+    if (++tick % 60 === 0) colors();
+    ctx.clearRect(0, 0, W, H);
+    for (var i = 0; i < nodes.length; i++) {
+      var a = nodes[i];
+      a.x += a.vx; a.y += a.vy;
+      if (a.x < 0 || a.x > W) a.vx *= -1; if (a.y < 0 || a.y > H) a.vy *= -1;
+      for (var j = i + 1; j < nodes.length; j++) {
+        var b = nodes[j], d = Math.hypot(a.x - b.x, a.y - b.y);
+        if (d < LINK) {
+          ctx.globalAlpha = (1 - d / LINK) * .5; ctx.strokeStyle = ink; ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+          if (Math.random() < .0009 && packets.length < 14) packets.push({ a: a, b: b, t: 0 });
+        }
+      }
+      var md = Math.hypot(a.x - mouse.x, a.y - mouse.y);
+      if (md < 170) {
+        ctx.globalAlpha = (1 - md / 170) * .9; ctx.strokeStyle = accent;
+        ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
+      }
+      ctx.globalAlpha = .8; ctx.fillStyle = md < 170 ? accent : ink;
+      ctx.beginPath(); ctx.arc(a.x, a.y, md < 170 ? 3 : 2, 0, 7); ctx.fill();
+    }
+    ctx.fillStyle = accent;
+    packets = packets.filter(function (p) {
+      p.t += .018; if (p.t >= 1) return false;
+      ctx.globalAlpha = 1; ctx.beginPath();
+      ctx.arc(p.a.x + (p.b.x - p.a.x) * p.t, p.a.y + (p.b.y - p.a.y) * p.t, 2.6, 0, 7); ctx.fill();
+      return true;
+    });
+    ctx.globalAlpha = 1;
+  }
+  frame();
+})();
+</script>
+</body>
+</html>
